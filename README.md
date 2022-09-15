@@ -5,20 +5,20 @@
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
 
-- __ACTIVE OPEN__
+__ACTIVE OPEN__
 
-`__SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
+__SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
  Esto da como resultado un paquete SYN que fluye hacia la pila remota.
- La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.`
+ La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.
 __STABLISHED__: 
 
-- __PASSIVE OPEN__
+__PASSIVE OPEN__
 ```
 LISTEN: 
 SYN_RCVD: 
 STABLISHED: 
  ```
- - __ACTIVE CLOSE__
+ __ACTIVE CLOSE__
  ```
 FIN_WAIT_1: 
 FIN_WAIT_2: 
@@ -26,7 +26,7 @@ CLOSING:
 TIME_WAIT:
 CLOSED: 
  ```
- - __PASSIVE CLOSE__
+ __PASSIVE CLOSE__
  ```
 CLOSING_WAIT: 
 LAST_ACK: 
