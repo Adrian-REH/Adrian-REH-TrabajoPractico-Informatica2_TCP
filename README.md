@@ -61,7 +61,7 @@
  - __CLOSED__: Sigue del estado **_LAST_ACK_** cuando la pila local recibe un reconocimiento por el **_FIN_** enviado. El número de reconocimiento debe ser 1 mayor que el número de secuencia del **_FIN_** enviado para provocar la transición de estado
 
 
- __CABECERA__
+
  > __ACK__: Indica que el Número de Reconocimiento es válido.
  > 
  > __SYN__: Permite sincronizar los Números de Secuencia al iniciar una conexión o
