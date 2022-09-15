@@ -32,7 +32,7 @@ CLOSED:
 ```
 
  __CABECERA__
-
+- [x] #739
  - __ACK__:Indica que el Número de Reconocimiento es válido.#739
  - __SYN__:Permite sincronizar los Números de Secuencia al iniciar una conexión o
 después de una reinicialización.
