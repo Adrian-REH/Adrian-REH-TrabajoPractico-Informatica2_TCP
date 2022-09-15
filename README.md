@@ -3,12 +3,19 @@
  El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
  
 ### Conexiones TCP etapas
- **Establecimiento de conexión (3-way handshake)**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**). El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
+ __Establecimiento de conexión (3-way handshake)__: 
+  - Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**).
+  - El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). 
+  - El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. 
+  - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
  
- **transferencia de datos**: 
+ __Transferencia de datos__: 
  
- **Fin de la conexión (4-way handshake)**: 
- 
+ __Fin de la conexión (4-way handshake)__: 
+Un proceso de solicitud primero llama al cierre, diciendo que el final realiza un cierre activo. El TCP en este extremo luego envía una sección FIN, indicando que los datos han sido enviados
+El par que recibe este FIN realiza un cierre pasivo. Este FIN es confirmado por TCP. Su recepción también se pasa como un fin de archivo al proceso de solicitud de recepción (después de estar en cola para esperar cualquier otro dato recibido por el proceso de solicitud). La recepción de FIN significa que el proceso de solicitud de recepción está en respuesta No se pueden recibir datos adicionales en la conexión
+El proceso de solicitud que recibió el carácter de fin de archivo llamará a close para cerrar su socket, haciendo que su TCP también envíe un FIN
+El remitente TCP original (es decir, el final que realizó el cierre activo) que recibió este FIN final confirma este FIN
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
