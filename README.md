@@ -12,10 +12,10 @@
  __Transferencia de datos__: 
  
  __Fin de la conexión (4-way handshake)__: 
-Un proceso de solicitud primero llama al cierre, diciendo que el final realiza un cierre activo. El TCP en este extremo luego envía una sección FIN, indicando que los datos han sido enviados
-El par que recibe este FIN realiza un cierre pasivo. Este FIN es confirmado por TCP. Su recepción también se pasa como un fin de archivo al proceso de solicitud de recepción (después de estar en cola para esperar cualquier otro dato recibido por el proceso de solicitud). La recepción de FIN significa que el proceso de solicitud de recepción está en respuesta No se pueden recibir datos adicionales en la conexión
-El proceso de solicitud que recibió el carácter de fin de archivo llamará a close para cerrar su socket, haciendo que su TCP también envíe un FIN
-El remitente TCP original (es decir, el final que realizó el cierre activo) que recibió este FIN final confirma este FIN
+  - Un proceso de solicitud primero llama al cierre, enviando una paquete FIN (**_ACTIVE CLOSE_**).
+  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este FIN es confirmado sin pueder recibir datos adicionales en la conexión
+  - El que recibió el carácter **_FIN_** llamará a **_CLOSED_** para cerrar su socket, respondiendo la contraparte un **_FIN_**
+  - El remitente TCP original que recibió este **_FIN_** final confirma este **_FIN_**.
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
