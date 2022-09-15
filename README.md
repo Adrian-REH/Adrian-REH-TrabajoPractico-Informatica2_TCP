@@ -33,12 +33,12 @@ CLOSED:
 
  __CABECERA__
 
->  __ACK__: Indica que el Número de Reconocimiento es válido.
+>  -__ACK__: Indica que el Número de Reconocimiento es válido.
 
->  __SYN__: Permite sincronizar los Números de Secuencia al iniciar una conexión o
+>  -__SYN__: Permite sincronizar los Números de Secuencia al iniciar una conexión o
 después de una reinicialización.
 
->  __FIN__: Indica la finalización del envío de datos. Puede estar activo tanto en los
+>  -__FIN__: Indica la finalización del envío de datos. Puede estar activo tanto en los
 segmentos de origen a destino como en los pertenecientes al flujo contrario ya
 que se trata de una comunicación full-duplex
 
