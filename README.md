@@ -4,19 +4,18 @@
  
 ### Conexiones TCP etapas
  __Establecimiento de conexión (3-way handshake)__: 
-  - Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**).
-  - El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). 
-  - El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. 
-  - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
+>  - Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**).
+>  - El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). 
+>  - El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. 
+>  - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
  
  __Fin de la conexión (4-way handshake)__: 
-  - Una maquina llama al cierre, enviando una paquete **_FIN_** (**_ACTIVE CLOSE_**).
-  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
-  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
-  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
+>  - Una maquina llama al cierre, enviando una paquete **_FIN_** (**_ACTIVE CLOSE_**).
+>  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
+>  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
+>  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
   
- __Transferencia de datos__:
-  El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
+ __Transferencia de datos__:_El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):_
 
 <p align="center"><img height="400" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png"> </p>
 
