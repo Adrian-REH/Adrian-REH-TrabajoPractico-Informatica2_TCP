@@ -1,13 +1,13 @@
 # Máquina de Estado
 ## Memoria descriptiva
- El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras. Las conexiones TCP se componen de tres etapas: establecimiento de conexión(**_3-way handshake_**), transferencia de datos y fin de la conexión(**_4-way handshake_**). 
+ El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
  
-### Procedimientos
- **3-way handshake**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones **_PASSIVE OPEN_**. El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación. El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos (SYN, SYN/ACK y ACK) y la fase de establecimiento de conexión.
+### Conexiones TCP etapas
+ **Establecimiento de conexión (3-way handshake)**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**). El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación. El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**(**_ACTIVE OPEN_**). Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
  
  **transferencia de datos**: 
  
- **4-way handshake**: 
+ **Fin de la conexión (4-way handshake)**: 
  
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
