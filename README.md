@@ -12,7 +12,7 @@
  __Transferencia de datos__:
   El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
 
-   <p align="center"> <img width="300" height="300" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png"> </p>
+   <p> <img width="300" height="300" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png"> </p>
 
    1. _Número de Secuencia (32 bits)_: identifica el primer byte de los datos que envía el segmento. Al principio de la conexión se asigna un número de secuencia inicial. A partir de este momento, el TCP numera los bytes consecutivamente a partir del ISN.
    2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
