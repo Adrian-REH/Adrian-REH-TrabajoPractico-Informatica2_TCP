@@ -2,10 +2,12 @@
 ## Memoria descriptiva
  El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras. Las conexiones TCP se componen de tres etapas: establecimiento de conexión(**_3-way handshake_**), transferencia de datos y fin de la conexión(**_4-way handshake_**). 
  
-### Procedimiento
- Para establecer la conexión se usa el procedimiento **_3-way handshake_**. Una de ellas abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones **_PASSIVE OPEN_** 
+### Procedimientos
+ **3-way handshake**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones **_PASSIVE OPEN_**. El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación. El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos (SYN, SYN/ACK y ACK) y la fase de establecimiento de conexión.
  
- Para la desconexión se usa el procedimiento **_4-way handshake_**. 
+ **transferencia de datos**: 
+ 
+ **4-way handshake**: 
  
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
@@ -13,7 +15,7 @@
 
 __ACTIVE OPEN__
 
-- __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
+- __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket en un determinado puerto. Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
   La pila local luego espera un paquete **_ACK SYN_**. La conexión permanece en estado **_SYN_SENT_** cuando se recibe este paquete.
 - __STABLISHED__: Sigue del estado **_SYN_SENT_** cuando la pila local envía un reconocimiento por el paquete **_ACKSYN_** recibido, completando el protocolo de enlace de tres vías. Ambos lados ahora pueden enviar y recibir datos.
 
