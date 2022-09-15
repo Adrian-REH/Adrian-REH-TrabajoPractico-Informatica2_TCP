@@ -20,11 +20,14 @@
 
 <p align="center"><img height="400" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png"> </p>
 
-   1. _Número de Secuencia (32 bits)_: identifica el primer byte de los datos que envía el segmento. Al principio de la conexión se asigna un número de secuencia inicial. A partir de este momento, el TCP numera los bytes consecutivamente a partir del ISN.
-   2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
-destino, e incluido en la transmisión del segmento. El cliente recalcula el checksum sobre las cabeceras y datos recibidos, la suma en complemento a uno con el checksum incluido, y el resultado debe ser -0. Si es así, se asume que el segmento ha llegado intacto y sin errores.
-   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(**_URG,**_ACK_**,**_PSH_**,**_RST_**,**_SYN_**,**_FIN_**)
-   4. _número **_ACK_** (32 bits)._: Al activar un bit de la cabecera (el bit **_ACK_**), el TCP tiene en cuenta el número de secuencia ACK que indica al otro extremo TCP el próximo byte que está dispuesto a recibir. Dicho de otro modo, el número **_ACK_** menos uno indica el último byte reconocido.
+>   1. _Número de Secuencia (32 bits)_: identifica el primer byte de los datos que envía el segmento. Al principio de la conexión se asigna un número de secuencia >inicial. A partir de este momento, el TCP numera los bytes consecutivamente a partir del ISN.
+>   
+>   2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
+>destino, e incluido en la transmisión del segmento. El cliente recalcula el checksum sobre las cabeceras y datos recibidos, la suma en complemento a uno con el >checksum incluido, y el resultado debe ser -0. Si es así, se asume que el segmento ha llegado intacto y sin errores.
+>
+>   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(**_URG,**_ACK_**,**_PSH_**,**_RST_**,**_SYN_**,**_FIN_**)
+>   
+>   4. _número **_ACK_** (32 bits)._: Al activar un bit de la cabecera (el bit **_ACK_**), el TCP tiene en cuenta el número de secuencia ACK que indica al otro extremo >TCP el próximo byte que está dispuesto a recibir. Dicho de otro modo, el número **_ACK_** menos uno indica el último byte reconocido.
 
 
  
