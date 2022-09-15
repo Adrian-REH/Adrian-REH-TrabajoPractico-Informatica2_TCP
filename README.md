@@ -10,7 +10,7 @@
   - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
  
  __Transferencia de datos__:
-  El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 3):
+  El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
    ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
    
    1. _Número de Secuencia (32 bits)_: para ordenar los segmentos TCP recibidos y detectar paquetes duplicados,
