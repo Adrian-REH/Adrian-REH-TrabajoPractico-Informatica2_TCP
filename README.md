@@ -14,6 +14,7 @@
   - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
   - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
   - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
+  
  __Transferencia de datos__:
   El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
 
