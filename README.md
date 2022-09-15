@@ -1,6 +1,6 @@
 # Máquina de Estado
 ## Memoria descriptiva
- El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
+ El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones en 3 etapas.
  
  ### Conexiones TCP etapas
   __Establecimiento de conexión (3-way handshake)__: 
