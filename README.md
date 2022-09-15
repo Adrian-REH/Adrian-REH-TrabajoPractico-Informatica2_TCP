@@ -28,9 +28,9 @@ __PASSIVE OPEN__
 
  __PASSIVE CLOSE__
 
-- __CLOSING_WAIT__: 
-- __LAST_ACK__: 
-- __CLOSED__: 
+- __CLOSING_WAIT__: Sigue del estado **_STABLISHED_** cuando la aplicación remota emite un cierre o apagado de socket. Esto da como resultado un paquete **_FIN_** que fluye desde la aplicación remota. La pila local debe recibir el **_FIN_** y reconocerlo. El número de acuse de recibo debe ser 1 mayor que el número de secuencia del **_FIN_** recibido para provocar la transición de estado.
+- __LAST_ACK__: Sigue del estado **_CLOSE_WAIT_** cuando la aplicación local emite un cierre o apagado de socket. Esto da como resultado un paquete **_FIN_** que fluye hacia la pila remota.
+- __CLOSED__: Sigue del estado **_LAST_ACK_** cuando la pila local recibe un reconocimiento por el **_FIN_** enviado. El número de reconocimiento debe ser 1 mayor que el número de secuencia del **_FIN_** enviado para provocar la transición de estado
 
 
 __CABECERA__
