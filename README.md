@@ -27,7 +27,7 @@ destino, e incluido en la transmisión del segmento. El cliente recalcula el che
   - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
  
 ## Máquina de estado de Protocolo de Control de Transmisión 
-<p align="center"><img width="300" height="300" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png"> </p>
+<p align="center"><img src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png"> </p>
 
 ### Aperturas y Cierre de Puerto
 __ACTIVE OPEN__
