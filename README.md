@@ -24,7 +24,7 @@
  >   2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
  >destino, e incluido en la transmisión del segmento. El cliente recalcula el checksum sobre las cabeceras y datos recibidos, la suma en complemento a uno con el >checksum incluido, y el resultado debe ser -0. Si es así, se asume que el segmento ha llegado intacto y sin errores.
  >
- >   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(**_URG,**_ACK_**,**_PSH_**,**_RST_**,**_SYN_**,**_FIN_**)
+ >   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(**_URG_**, **_ACK_**, **_PSH_**, **_RST_**, **_SYN_**, **_FIN_**)
  >   
  >   4. _número **_ACK_** (32 bits)._: Al activar un bit de la cabecera (el bit **_ACK_**), el TCP tiene en cuenta el número de secuencia ACK que indica al otro extremo >TCP el próximo byte que está dispuesto a recibir. Dicho de otro modo, el número **_ACK_** menos uno indica el último byte reconocido.
 
