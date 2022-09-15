@@ -9,7 +9,7 @@ __ACTIVE OPEN__
 
 - __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
   Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
-  La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.
+  La pila local luego espera un paquete **_ACKSYN_**. La conexión permanece en estado **_SYN_SENT_** cuando se recibe este paquete.
 - __STABLISHED__: 
 
 __PASSIVE OPEN__
