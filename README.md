@@ -5,25 +5,32 @@
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
 
-
+ __Descripcion de estado de conexion__
   __ACTIVE OPEN__
+ ```
  - __SYN_SENT__: 
  - __STABLISHED__: 
+ ```
  - PASSIVE OPEN
+```
  - __LISTEN__: 
  - __SYN_RCVD__: 
  - __STABLISHED__: 
+ ```
  __ACTIVE CLOSE__
+ ```
  - __FIN_WAIT_1__: 
  - __FIN_WAIT_2__: 
  - __CLOSING__: 
  - __TIME_WAIT__:
  - __CLOSED__: 
+ ```
  __PASSIVE CLOSE__
+ ```
  - __CLOSING_WAIT__: 
  - __LAST_ACK__: 
  - __CLOSED__: 
-
+```
 
  __CABECERA__
  - __ACK__:Indica que el Número de Reconocimiento es válido.
