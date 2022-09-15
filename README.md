@@ -11,7 +11,7 @@
  
  __Transferencia de datos__:
   El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
-   ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
+   ![./recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png)
    
    1. _Número de Secuencia (32 bits)_: para ordenar los segmentos TCP recibidos y detectar paquetes duplicados,
    2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
