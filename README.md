@@ -3,7 +3,7 @@
  El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
  
 ### Conexiones TCP etapas
- **Establecimiento de conexión (3-way handshake)**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**). El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación. El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**(**_ACTIVE OPEN_**). Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
+ **Establecimiento de conexión (3-way handshake)**: Una maquina abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones (**_PASSIVE OPEN_**). El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
  
  **transferencia de datos**: 
  
@@ -12,7 +12,7 @@
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
-
+### Aperturas y Cierres de Puerto
 __ACTIVE OPEN__
 
 - __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket en un determinado puerto. Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
