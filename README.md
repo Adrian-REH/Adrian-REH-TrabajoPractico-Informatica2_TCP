@@ -2,7 +2,7 @@
 ## Memoria descriptiva
  El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras. Las conexiones TCP se componen de tres etapas: establecimiento de conexión(**_3-way handshake_**), transferencia de datos y fin de la conexión(**_4-way handshake_**). 
  
- ###procedimiento
+###procedimiento
  Para establecer la conexión se usa el procedimiento **_3-way handshake_**. Una de ellas abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones **_PASSIVE OPEN_** 
  
  Para la desconexión se usa el procedimiento **_4-way handshake_**. 
