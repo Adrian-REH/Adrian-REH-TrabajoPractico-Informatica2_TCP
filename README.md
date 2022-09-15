@@ -8,7 +8,11 @@
   - El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). 
   - El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. 
   - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
- 
+  __Fin de la conexión (4-way handshake)__: 
+  - Una maquina llama al cierre, enviando una paquete **_FIN_** (**_ACTIVE CLOSE_**).
+  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
+  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
+  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
  __Transferencia de datos__:
   El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):
 
@@ -17,14 +21,10 @@
    1. _Número de Secuencia (32 bits)_: identifica el primer byte de los datos que envía el segmento. Al principio de la conexión se asigna un número de secuencia inicial. A partir de este momento, el TCP numera los bytes consecutivamente a partir del ISN.
    2. _checksums (16 bits)_: Es calculado por el emisor y se incluye una pseudo-cabecera que incluye la dirección IP origen y
 destino, e incluido en la transmisión del segmento. El cliente recalcula el checksum sobre las cabeceras y datos recibidos, la suma en complemento a uno con el checksum incluido, y el resultado debe ser -0. Si es así, se asume que el segmento ha llegado intacto y sin errores.
-   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(URG,ACK,PSH,RST,SYN,FIN)
-   4. _número ACK (32 bits)._: Al activar un bit de la cabecera (el bit ACK), el TCP tiene en cuenta el número de secuencia ACK que indica al otro extremo TCP el próximo byte que está dispuesto a recibir. Dicho de otro modo, el número ACK menos uno indica el último byte reconocido.
+   3. _Campo control (6 bits)_:s eñala una función específica del protocolo cuando está activo(**_URG,**_ACK_**,**_PSH_**,**_RST_**,**_SYN_**,**_FIN_**)
+   4. _número **_ACK_** (32 bits)._: Al activar un bit de la cabecera (el bit **_ACK_**), el TCP tiene en cuenta el número de secuencia ACK que indica al otro extremo TCP el próximo byte que está dispuesto a recibir. Dicho de otro modo, el número **_ACK_** menos uno indica el último byte reconocido.
 
- __Fin de la conexión (4-way handshake)__: 
-  - Una maquina llama al cierre, enviando una paquete **_FIN_** (**_ACTIVE CLOSE_**).
-  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
-  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
-  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
+
  
 ## Máquina de estado de Protocolo de Control de Transmisión 
 <p align="center"><img src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png"> </p>
