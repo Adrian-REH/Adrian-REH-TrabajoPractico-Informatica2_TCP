@@ -1,16 +1,20 @@
 # Máquina de Estado
-### Memoria descriptiva
- El sistema ha representar es de Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
+## Memoria descriptiva
+ El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras. Las conexiones TCP se componen de tres etapas: establecimiento de conexión(**_3-way handshake_**), transferencia de datos y fin de la conexión(**_4-way handshake_**). 
  
-### Máquina de estado de Protocolo de Control de Transmisión y Descripcion de estados de conexion
+ ###procedimiento
+ Para establecer la conexión se usa el procedimiento **_3-way handshake_**. Una de ellas abre un socket en un determinado puerto tcp y se queda a la escucha de nuevas conexiones **_PASSIVE OPEN_** 
+ 
+ Para la desconexión se usa el procedimiento **_4-way handshake_**. 
+ 
+## Máquina de estado de Protocolo de Control de Transmisión 
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
 
 __ACTIVE OPEN__
 
-- __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
-  Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
-  La pila local luego espera un paquete **_ACKSYN_**. La conexión permanece en estado **_SYN_SENT_** cuando se recibe este paquete.
+- __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
+  La pila local luego espera un paquete **_ACK SYN_**. La conexión permanece en estado **_SYN_SENT_** cuando se recibe este paquete.
 - __STABLISHED__: Sigue del estado **_SYN_SENT_** cuando la pila local envía un reconocimiento por el paquete **_ACKSYN_** recibido, completando el protocolo de enlace de tres vías. Ambos lados ahora pueden enviar y recibir datos.
 
 __PASSIVE OPEN__
@@ -21,8 +25,8 @@ __PASSIVE OPEN__
 
  __ACTIVE CLOSE__
 
-- __FIN_WAIT_1__: Sigue del estado **_ESTABLECIDO_** cuando la aplicación local emite un cierre o apagado de socket. Esto da como resultado un paquete **_FIN_** que fluye hacia la pila remota. La pila local ahora está esperando un reconocimiento de **_FIN_**.
-- __FIN_WAIT_2__: Sigue del estado **_FIN_WAIT_1_** cuando la pila local recibe un reconocimiento por el **_FIN_** que se envió. El número de acuse de recibo debe ser 1 mayor que el número de secuencia del **_FIN enviado para provocar la transición de estado.
+- __FIN_WAIT_1__: Sigue del estado **_STABLISHED_** cuando la aplicación local emite un cierre o apagado de socket. Esto da como resultado un paquete **_FIN_** que fluye hacia la pila remota. La pila local ahora está esperando un reconocimiento de **_FIN_**.
+- __FIN_WAIT_2__: Sigue del estado **_FIN_WAIT_1_** cuando la pila local recibe un reconocimiento por el **_FIN_** que se envió. El número de acuse de recibo debe ser 1 mayor que el número de secuencia del **_FIN_** enviado para provocar la transición de estado.
 - __CLOSING__: Sigue del estado **_FIN_WAIT_1_** cuando la pila local recibe un reconocimiento por el **_FIN_** que se envió y el indicador **_FIN_** también se establece (cierre simultáneo). El número de acuse de recibo debe ser 1 mayor que el número de secuencia del **_FIN_** enviado para provocar la transición de estado.
 - __TIME_WAIT__:Sigue del estado **_FIN_WAIT_2_** o del estado **_CLOSING_** cuando la pila local recibe un **_FIN_** y envía un acuse de recibo. El número de acuse de recibo debe ser 1 mayor que el número de secuencia del **_FIN_** recibido para provocar la transición de estado.
 - __CLOSED__: Sigue del estado **_TIME_WAIT_** cuando ha pasado 2MSL _(el doble de la duración máxima del segmento) (MSL = 60 segundos)_.
@@ -44,4 +48,4 @@ después de una reinicialización.
 segmentos de origen a destino como en los pertenecientes al flujo contrario ya
 que se trata de una comunicación full-duplex
 
-### Código
+## Código
