@@ -7,7 +7,7 @@
 
 - __ACTIVE OPEN__
 
-__SYN_SENT__: `La aplicación local ha emitido una llamada abierta de socket. 
+`__SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
  Esto da como resultado un paquete SYN que fluye hacia la pila remota.
  La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.`
 __STABLISHED__: 
