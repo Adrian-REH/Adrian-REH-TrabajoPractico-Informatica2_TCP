@@ -6,10 +6,10 @@
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
 
  __Descripcion de estado de conexion__
-  __ACTIVE OPEN__
+- __ACTIVE OPEN__
  ```
- - __SYN_SENT__: 
- - __STABLISHED__: 
+SYN_SENT: 
+STABLISHED: 
  ```
  - PASSIVE OPEN
 ```
