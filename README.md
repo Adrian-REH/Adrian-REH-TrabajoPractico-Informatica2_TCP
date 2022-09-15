@@ -7,10 +7,10 @@
 
 - __ACTIVE OPEN__
 
-SYN_SENT: La aplicación local ha emitido una llamada abierta de socket. 
+__SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket. 
  Esto da como resultado un paquete SYN que fluye hacia la pila remota.
  La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.
-STABLISHED: 
+__STABLISHED__: 
 
 - __PASSIVE OPEN__
 ```
@@ -33,7 +33,7 @@ LAST_ACK:
 CLOSED: 
 ```
 
-CABECERA
+__CABECERA__
 > __ACK__: Indica que el Número de Reconocimiento es válido.
 > 
 > __SYN__: Permite sincronizar los Números de Secuencia al iniciar una conexión o
