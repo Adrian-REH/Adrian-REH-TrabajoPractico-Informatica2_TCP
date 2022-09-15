@@ -1,6 +1,7 @@
 # Máquina de Estado
 ### Memoria descriptiva
-
+ El sistema ha representar es de Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones seguras.
+ 
 ### Máquina de estado de Protocolo de Control de Transmisión y Descripcion de estados de conexion
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
