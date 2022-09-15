@@ -12,7 +12,8 @@
 ## Máquina de estado de Protocolo de Control de Transmisión 
 
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
-### Aperturas y Cierres de Puerto
+
+### Aperturas y Cierre de Puerto
 __ACTIVE OPEN__
 
 - __SYN_SENT__: La aplicación local ha emitido una llamada abierta de socket en un determinado puerto. Esto da como resultado un paquete **_SYN_** que fluye hacia la pila remota.
