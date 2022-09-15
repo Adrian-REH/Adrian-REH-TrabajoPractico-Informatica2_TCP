@@ -6,16 +6,17 @@
  ![./recursos/tcp-state-machine.png](https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/tcp-state-machine.png)
 
  - __CLOSE__: 
- - LISTEN: 
- - SYN_SENT: 
- - SYN_RCVD: 
- - FIN_WAIT_1: 
- - FIN_WAIT_2: 
- - STABLISHED: 
- - CLOSEH_WAIT: 
- - LAST_ACK: 
- - CLOSING: 
- - TIME_WAIT: 
- - D
- - 
+ - __CLOSING__: 
+ - __CLOSEH_WAIT__: 
+ - __LISTEN__: 
+ - __SYN_SENT__: 
+ - __SYN_RCVD__: 
+ - __FIN_WAIT_1__: 
+ - __FIN_WAIT_2__: 
+ - __LAST_ACK__: 
+ - __TIME_WAIT__: 
+ - __STABLISHED__: 
+ - __ACK__:
+ - __SYN__:
+ - __FIN__:
 ### Código
