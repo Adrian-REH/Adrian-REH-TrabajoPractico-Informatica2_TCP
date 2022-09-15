@@ -7,13 +7,13 @@
 
 - __ACTIVE OPEN__
  ```
-SYN_SENT: 
+SYN_SENT: La aplicación local ha emitido una llamada abierta de socket. Esto da como resultado un paquete SYN que fluye hacia la pila remota. La pila local luego espera un paquete ACKSYN. La conexión permanece en estado SYN_SENT cuando se recibe este paquete.
 STABLISHED: 
  ```
 - __PASSIVE OPEN__
 ```
 LISTEN: 
-SYN_RCVD__: 
+SYN_RCVD: 
 STABLISHED: 
  ```
  - __ACTIVE CLOSE__
