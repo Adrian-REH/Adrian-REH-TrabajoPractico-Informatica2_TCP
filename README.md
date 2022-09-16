@@ -15,7 +15,7 @@
  >  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
  >  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
 
-  __Transferencia de datos__:_El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):_
+  __Transferencia de datos__: _El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):_
 
  <p align="center"><img height="400" src="https://github.com/Adrian-REH/Adrian-REH-TrabajoPractico-Informatica2_TCP/blob/main/recursos/Opera%20Captura%20de%20pantalla_2022-09-15_180002_cv.uoc.edu.png"> </p>
 
