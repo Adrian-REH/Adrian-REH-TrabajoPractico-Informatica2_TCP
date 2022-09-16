@@ -10,7 +10,7 @@
  >  - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
 
   __Fin de la conexión (4-way handshake)__: 
- >  - Una maquina llama al cierre, enviando una paquete **_FIN_** (**_ACTIVE CLOSE_**).
+ >  - Una maquina llama al cierre, enviando un paquete **_FIN_** (**_ACTIVE CLOSE_**).
  >  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
  >  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
  >  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
