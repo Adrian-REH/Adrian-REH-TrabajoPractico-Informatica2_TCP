@@ -142,7 +142,8 @@ char * ns_ack(char *);
 
  >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
  
- - **CMD 1 **: 
+ **CMD 1**: 
+- PASSIVE OPEN
 ```
 Hola Jefe!. Que quiere ser?
 1.Servidor
@@ -184,7 +185,9 @@ Hola Jefe!. Que quiere ser?
 *CONEXION ESTABLECIDA*:
 *TEXTO RECIBIDO*: gato
 Desea enviar mas datos? 1.No 2.Si: 1
-
+```
+- ACTIVE CLOSE
+```
 *FIN*: Enviado
 
 *ACK*: Recibido 3ms
@@ -213,7 +216,9 @@ Desea enviar mas datos? 1.No 2.Si: 1
 
 *FIN DE LA COMUNICACION*
 ```
- - **CMD 2 **: 
+
+**CMD 2**: 
+- ACTIVE OPEN
 ```
 Hola Jefe!. Que quiere ser?
 1.Servidor
@@ -222,7 +227,8 @@ Hola Jefe!. Que quiere ser?
 : 2
  IP:PORT(Origen): 182.110.4.53:4040
  IP:PORT(Destino): 255.255.255.255:4040
-
+```
+```
 *CLIENTE*:SYN Enviado
 
 *CLIENTE*: SYN/ACK Recibido 9ms
@@ -241,7 +247,10 @@ Hola Jefe!. Que quiere ser?
 *CONEXION ESTABLECIDA*:
 *TEXTO RECIBIDO*: perro
 Desea enviar mas datos? 1.No 2.Si: 2
+```
+- PASSIVE CLOSE
 
+```
 *FIN*: Recibido 0ms
 
 *RECIBE*:
