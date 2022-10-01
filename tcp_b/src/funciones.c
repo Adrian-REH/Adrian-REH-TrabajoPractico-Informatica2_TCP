@@ -3,11 +3,12 @@
 int seleccionar(void){
 	int opc;
 	int siguiente=0,crack=4;
-
-	printf("Hola Jefe!. Que quiere ser?\n1.Servidor\n2.Cliente\n3.Salir\n: ");
+	printf("\n---------------------------------------------------------\n");
+	printf("Hola Jefe!. Que quiere ser? 1.Servidor 2.Cliente 3.Salir\n: ");
 	scanf("%d",&opc);
 	switch(opc){
 	case 1:
+		printf("\n---------------------------------------------------------\n");
 		printf("*SEGMENTO*:  ");
 
 		do{
@@ -45,6 +46,7 @@ int seleccionar(void){
 	}
 	switch(siguiente){
 	case 1:
+		printf("\n---------------------------------------------------------\n");
 		FIN_WAIT_1();
 
 		//ACTIVO
@@ -52,6 +54,7 @@ int seleccionar(void){
 	case 3:
 		//CLOSING_WAIT(escribe_servicio("SYN"));
 			//PASIVO
+		printf("\n---------------------------------------------------------\n");
 		CLOSING_WAIT();
 
 		break;
@@ -69,8 +72,9 @@ segmento_t escribe_servicio(char *CTRL){
 
 
 	strcpy(segmentos.ACK,"");
-	printf("\n Texto a enviar: ");
+	printf("\n\tTexto a enviar: ");
 	scanf("%s",segmentos.datos);
+	printf("\n---------------------------------------------------------\n");
 	if(strcmp(aux,"SYN/ACK")== 0){
 		strcpy(segmentos.portip_origen,"255.255.255.255:4040");
 		strcpy(segmentos.portip_destino,"");
@@ -78,8 +82,8 @@ segmento_t escribe_servicio(char *CTRL){
 		strcpy(segmentos.CTRL.ACK,"TRUE");
 		strcpy(segmentos.CTRL.SYN,"TRUE");
 		strcpy(segmentos.CTRL.FIN,"FALSE");
-		printf("\n*SOCKET*\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n",segmentos.portip_origen,segmentos.portip_destino);
-
+		printf("\n*SOCKET*\n\tIP:PORT(Origen):\t%s\n\tIP:PORT(Destino):\t%s\n",segmentos.portip_origen,segmentos.portip_destino);
+		printf("\n---------------------------------------------------------\n");
 	}else if(strcmp(aux,"SYN")== 0){
 
 		strcpy(segmentos.portip_origen,"182.110.4.53:4040");
@@ -88,20 +92,22 @@ segmento_t escribe_servicio(char *CTRL){
 		strcpy(segmentos.CTRL.ACK,"FALSE");
 		strcpy(segmentos.CTRL.SYN,"TRUE");
 		strcpy(segmentos.CTRL.FIN,"FALSE");
-		printf("*SOCKET*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n",segmentos.portip_origen,segmentos.portip_destino);
-
+		printf("\n*SOCKET*\n\tIP:PORT(Origen):\t%s\n\tIP:PORT(Destino):\t%s\n",segmentos.portip_origen,segmentos.portip_destino);
+		printf("\n---------------------------------------------------------\n");
 	}
 
 	return segmentos;
 
 }
 
+//ACTIVE CLOSE
 int SYN_SENT(segmento_t segmentos){
 	segmento_t sgment,sgment_stb;
 	int i = 0;
 	char NS[30];
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*CLIENTE*:SYN Enviado\n");
+	printf("\n*CLIENTE*:\tSYN Enviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,datos);
 	fclose(datos);
 	Sleep(100);
@@ -118,9 +124,9 @@ int SYN_SENT(segmento_t segmentos){
 			if((strcmp(sgment.portip_destino,segmentos.portip_origen)== 0)&&(strcmp(segmentos.NS,NS)== 0)){
 
 				if((strcmp(sgment.CTRL.SYN,"TRUE")== 0)&&strcmp(sgment.CTRL.ACK,"TRUE")== 0){
-
-					printf("\n*CLIENTE*: SYN/ACK Recibido %dms\n",i);
-					printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+					printf("\n*CLIENTE*:\tSYN/ACK Recibido %dms\n",i);
+					printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+					printf("\n---------------------------------------------------------\n");
 					strcpy(sgment_stb.portip_origen,segmentos.portip_origen);
 					strcpy(sgment_stb.portip_destino,segmentos.portip_destino);
 					strcpy(sgment_stb.ACK,segmentos.NS);
@@ -151,6 +157,7 @@ int SYN_SENT(segmento_t segmentos){
 	return 0;
 }
 
+//PASSIVE CLOSE
 int LISTEN(segmento_t segmentos){
 	segmento_t sgment,sgment_rcvd;
 
@@ -159,14 +166,13 @@ int LISTEN(segmento_t segmentos){
 		datos=fopen("../../datos.dat","rb");
 		fread(&sgment,sizeof(segmento_t),1,datos);
 		while(!feof(datos)){
-			printf("%s=%s \n",sgment.portip_destino,segmentos.portip_origen);
-
 				if(strcmp(sgment.portip_destino,segmentos.portip_origen)==0){
 
 					if(strcmp(sgment.CTRL.SYN,"TRUE")== 0){
 
-						printf("\n*SERVIDOR*: SYN Recibido %dms\n",i);
-						printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+						printf("\n*SERVIDOR*:\tSYN Recibido %dms\n",i);
+						printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+						printf("\n---------------------------------------------------------\n");
 						strcpy(sgment_rcvd.portip_origen,segmentos.portip_origen);
 						strcpy(sgment_rcvd.portip_destino,sgment.portip_origen);
 						strcpy(sgment_rcvd.ACK,segmentos.NS);
@@ -200,14 +206,15 @@ int LISTEN(segmento_t segmentos){
 	return 0;
 
 }
-
 int SYN_RCVD(segmento_t segmentos){
 	segmento_t sgment;
 	int i = 0;
 	char NS[30];
 	fclose(datos);
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*SERVIDOR*: SYN/ACK Enviado\n");
+
+	printf("\n*SERVIDOR*:\tSYN/ACK Enviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,datos);
 	fclose(datos);
 
@@ -220,8 +227,10 @@ int SYN_RCVD(segmento_t segmentos){
 
 				if((strcmp(sgment.portip_destino,segmentos.portip_origen)== 0)&&(strcmp(segmentos.NS,NS)== 0)){
 					if(strcmp(sgment.CTRL.ACK,"TRUE")== 0){
-						printf("\n*SERVIDOR*: ACK Recibido %dms\n",i);
-						printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+
+						printf("\n*SERVIDOR*:\tACK Recibido %dms\n",i);
+						printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
+						printf("\n---------------------------------------------------------\n");
 						return STABLISHED(sgment,sgment.datos);
 					}else if(strcmp(sgment.CTRL.FIN,"TRUE")){
 						//return CLOSE();
@@ -247,32 +256,37 @@ int SYN_RCVD(segmento_t segmentos){
 	return 0;
 }
 
+//ESPERO SEGMENTO O FIN
 int STABLISHED(segmento_t segmentos,char*s){
-	int i = 0;
+
 	int opc;
 	segmento_t sgment;
 	servicio=fopen("servicios.dat","wb");
+
 	printf("\n*SEGMENTO RESPALDADO*\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,servicio);
 	fclose(servicio);
 
 	datos=fopen("../../datos.dat","wb");
+
 	printf("\n*CONEXION ESTABLECIDA*:\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,datos);
 	fclose(datos);
 
 
-	printf("*TEXTO RECIBIDO*: %s \nDesea enviar mas datos? 1.No 2.Si: ",s);
+	printf("*TEXTO RECIBIDO*:\t%s \nDesea enviar mas datos?\t1.No\t2.Si: ",s);
 	scanf("%d",&opc);
-
-
-
 
 		datos=fopen("../../datos.dat","rb");
 		fread(&sgment,sizeof(segmento_t),1,datos);
 		while(!feof(datos)){
 
 			if(strcmp(sgment.CTRL.FIN,"TRUE")== 0){
+				printf("\n---------------------------------------------------------\n");
+				printf("\n*LA CONTRAPARTE ENVIO UN FIN DESCONECTARSE*\n");
+				opc=3;
 				return 3;//ES PASIVO
 			}else if(strcmp(sgment.CTRL.FIN,"FALSE")== 0){
 
@@ -282,8 +296,6 @@ int STABLISHED(segmento_t segmentos,char*s){
 			fread(&sgment,sizeof(segmento_t),1,datos);
 		}
 
-		Sleep(1000);
-		i++;
 
 	fclose(datos);
 	return 2;
@@ -324,7 +336,9 @@ int FIN_WAIT_1(void){
 	strcpy(finsegment.CTRL.FIN,"TRUE");
 
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*FIN*: Enviado\n");
+
+	printf("\n*FIN*:\tEnviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&finsegment,sizeof(segmento_t),1,datos);
 	fclose(datos);
 
@@ -343,9 +357,9 @@ int FIN_WAIT_2(segmento_t segmentos){
 
 			if((strcmp(finsegment.portip_destino,segmentos.portip_origen)== 0)&&(strcmp(segmentos.NS,NS)== 0)){
 
-				printf("\n*ACK*: Recibido %dms\n",i);
-				printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",finsegment.portip_origen,finsegment.portip_destino,finsegment.NS,finsegment.ACK,finsegment.CTRL.ACK,finsegment.CTRL.SYN,finsegment.CTRL.FIN);
-
+				printf("\n*ACK*:\tRecibido %dms\n",i);
+				printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",finsegment.portip_origen,finsegment.portip_destino,finsegment.NS,finsegment.ACK,finsegment.CTRL.ACK,finsegment.CTRL.SYN,finsegment.CTRL.FIN);
+				printf("\n---------------------------------------------------------\n");
 				return TIME_WAIT(segmentos);
 
 			}
@@ -358,7 +372,6 @@ int FIN_WAIT_2(segmento_t segmentos){
 	fclose(datos);
 	return 0;
 }
-
 int TIME_WAIT(segmento_t segmentos){
 	segmento_t finsegment,rcvsegment;
 	int i = 0;
@@ -367,9 +380,10 @@ int TIME_WAIT(segmento_t segmentos){
 		fread(&rcvsegment,sizeof(segmento_t),1,datos);
 		while(!feof(datos)){
 			if((strcmp(rcvsegment.portip_destino,segmentos.portip_origen)== 0)&&(strcmp(rcvsegment.CTRL.FIN,"TRUE")== 0)){
-					printf("\n*FIN*: Recibido %dms\n",i);
-					printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",rcvsegment.portip_origen,rcvsegment.portip_destino,rcvsegment.NS,rcvsegment.ACK,rcvsegment.CTRL.ACK,rcvsegment.CTRL.SYN,rcvsegment.CTRL.FIN);
 
+					printf("\n*FIN*:\tRecibido %dms\n",i);
+					printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",rcvsegment.portip_origen,rcvsegment.portip_destino,rcvsegment.NS,rcvsegment.ACK,rcvsegment.CTRL.ACK,rcvsegment.CTRL.SYN,rcvsegment.CTRL.FIN);
+					printf("\n---------------------------------------------------------\n");
 					strcpy(finsegment.ACK,"C");
 					strcat(finsegment.ACK,",");
 					strcat(finsegment.ACK,rcvsegment.NS);
@@ -393,7 +407,9 @@ int TIME_WAIT(segmento_t segmentos){
 	fclose(datos);
 
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*ACK*: Enviado\n");
+
+	printf("\n*ACK*:\tEnviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&finsegment,sizeof(segmento_t),1,datos);
 	fclose(datos);
 	Sleep(10000);
@@ -415,9 +431,10 @@ int CLOSING_WAIT(void){
 		fread(&rcvsegment,sizeof(segmento_t),1,datos);
 		while(!feof(datos)){
 				if(strcmp(rcvsegment.CTRL.FIN,"TRUE")== 0){
-					printf("\n*FIN*: Recibido %dms\n",i);
-					printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",rcvsegment.portip_origen,rcvsegment.portip_destino,rcvsegment.NS,rcvsegment.ACK,rcvsegment.CTRL.ACK,rcvsegment.CTRL.SYN,rcvsegment.CTRL.FIN);
 
+					printf("\n*FIN*:\tRecibido %dms\n",i);
+					printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",rcvsegment.portip_origen,rcvsegment.portip_destino,rcvsegment.NS,rcvsegment.ACK,rcvsegment.CTRL.ACK,rcvsegment.CTRL.SYN,rcvsegment.CTRL.FIN);
+					printf("\n---------------------------------------------------------\n");
 					strcpy(finsegment.ACK,"D");
 					strcat(finsegment.ACK,",");
 					strcat(finsegment.ACK,rcvsegment.NS);
@@ -449,7 +466,9 @@ int LAST_ACK(segmento_t segmentos){
 	char NS[30];
 
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*ACK*: Enviado\n");
+
+	printf("\n*ACK*:\tEnviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,datos);
 	fclose(datos);
 	Sleep(2000);
@@ -457,7 +476,9 @@ int LAST_ACK(segmento_t segmentos){
 	strcpy(segmentos.CTRL.ACK,"FALSE");
 	strcpy(segmentos.CTRL.FIN,"TRUE");
 	datos=fopen("../../datos.dat","wb");
-	printf("\n*FIN*: Enviado\n");
+
+	printf("\n*FIN*:\tEnviado\n");
+	printf("\n---------------------------------------------------------\n");
 	fwrite(&segmentos,sizeof(segmento_t),1,datos);
 	fclose(datos);
 
@@ -470,9 +491,9 @@ int LAST_ACK(segmento_t segmentos){
 			strcpy(NS,ns_ack(finsegment.ACK));
 			if((strcmp(finsegment.portip_destino,segmentos.portip_origen)== 0)&&(strcmp(segmentos.NS,NS)== 0)){
 
-				printf("\n*ACK*: Recibido %dms\n",i);
-				printf("\n*RECIBE*:\n IP:PORT(Origen): %s \n IP:PORT(Destino): %s \n NS: %s \n ACK: %s \n CTRL.ACK: %s \n CTRL.SYN: %s \n CTRL.FIN: %s \n",finsegment.portip_origen,finsegment.portip_destino,finsegment.NS,finsegment.ACK,finsegment.CTRL.ACK,finsegment.CTRL.SYN,finsegment.CTRL.FIN);
-
+				printf("\n*ACK*:\tRecibido %dms\n",i);
+				printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",finsegment.portip_origen,finsegment.portip_destino,finsegment.NS,finsegment.ACK,finsegment.CTRL.ACK,finsegment.CTRL.SYN,finsegment.CTRL.FIN);
+				printf("\n---------------------------------------------------------\n");
 					return CLOSED();
 
 			}
@@ -487,8 +508,10 @@ int LAST_ACK(segmento_t segmentos){
 }
 
 
-
+//FIN TOTAL
 int CLOSED(void){
+
 	printf("\n*FIN DE LA COMUNICACION*\n");
+	printf("\n---------------------------------------------------------\n");
 	return 0;
 }
