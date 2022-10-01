@@ -8,12 +8,21 @@
  >  - El cliente envia un segmento **_SYN_** inicial al servidor como parte de la negociación(**_ACTIVE OPEN_**). 
  >  - El lado servidor respondería a la petición **_SYN_** válida con un paquete **_SYN/ACK_**. 
  >  - Finalmente, el cliente debería responderle al servidor con un **_ACK_**, completando así la negociación en tres pasos **_(SYN, SYN/ACK y ACK)_** y la fase de establecimiento de conexión.
+>
+>   <p align="center"><img  src="https://user-images.githubusercontent.com/64231248/193424047-244a354a-fb86-4eca-9a27-0d72fc27fbe0.gif"> </p>
+>   
+>  _referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]_
+ 
+ __Fin de la conexión (4-way handshake)__: 
 
-  __Fin de la conexión (4-way handshake)__: 
- >  - Una maquina llama al cierre, enviando un paquete **_FIN_** (**_ACTIVE CLOSE_**).
+>  - Una maquina llama al cierre, enviando un paquete **_FIN_** (**_ACTIVE CLOSE_**).
  >  - El cliente que recibe este FIN realiza un (**_PASSIVE CLOSE_**). Este **_FIN_** es confirmado por la maquina enviando un caracter fin de archivo.
  >  - El cliente recibió el carácter fin de archivo y llama a close para cerrar su socket, respondiendo un **_FIN_**.
  >  - La maquina que recibió este **_FIN_** final confirma este **_FIN_**.
+ >
+ >  <p align="center"><img  src="https://user-images.githubusercontent.com/64231248/193422432-fe214588-eec4-41a9-86ce-b9f601c271c7.gif"> </p>
+ >  
+ >  _referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]_
 
   __Transferencia de datos__: _El segmento TCP consta de una cabecera y un cuerpo para encapsular datos(solo describire 4):_
 
@@ -126,21 +135,7 @@ int CLOSED(void);
 char * ns_ack(char *);
 #endif /* HEADERS_MYLIB_H_ */
 ```
- ### Puesta en marcha
- - **INICIAR COMUNICACION**: 
-  Luego de indicar ser Servidor(PASSIVE OPEN) o Cliente(ACTIVE OPEN) e ingresar el texto a enviar te podras guiar de lo que sucedera con el siguiente gif
- 
-   <p align="center"><img  src="https://user-images.githubusercontent.com/64231248/193424047-244a354a-fb86-4eca-9a27-0d72fc27fbe0.gif"> </p>
-   
- >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
-  
- - **FINZALIZAR COMUNICACION**: 
-   Luego de que la consola pregunte si Seguiras ingresando mas datos debes ingresar 1 para el **_ACTIVE CLOSE_** y en la otra maquina debes ingresar 2 Para hacer el **_PASSIVE CLOSE_**. 
-   
-   <p align="center"><img  src="https://user-images.githubusercontent.com/64231248/193422432-fe214588-eec4-41a9-86ce-b9f601c271c7.gif"> </p>
-
-
- >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
+ ## Puesta en marcha
  
  **CMD 1**: 
 - PASSIVE OPEN
@@ -153,32 +148,31 @@ Hola Jefe!. Que quiere ser?
 *SEGMENTO*:  
  Texto a enviar: perro
 
-*SOCKET*
- IP:PORT(Origen): 255.255.255.255:4040
- IP:PORT(Destino):
-
+*SOCKET*:
+	 IP:PORT(Origen): 255.255.255.255:4040
+	 IP:PORT(Destino):
+```
+```
 *SERVIDOR*: SYN Recibido 0ms
-
- IP:PORT(Origen): 182.110.4.53:4040
- IP:PORT(Destino): 255.255.255.255:4040
- NS: B
- ACK:
- CTRL.ACK: FALSE
- CTRL.SYN: TRUE
- CTRL.FIN: FALSE
+	 IP:PORT(Origen): 182.110.4.53:4040
+	 IP:PORT(Destino): 255.255.255.255:4040
+	 NS: B
+	 ACK:
+	 CTRL.ACK: FALSE
+	 CTRL.SYN: TRUE
+	 CTRL.FIN: FALSE
 
 *SERVIDOR*: SYN/ACK Enviado
 
 *SERVIDOR*: ACK Recibido 1ms
-
-*RECIBE*:
- IP:PORT(Origen): 182.110.4.53:4040
- IP:PORT(Destino): 255.255.255.255:4040
- NS: B
- ACK: B,A
- CTRL.ACK: TRUE
- CTRL.SYN: FALSE
- CTRL.FIN: FALSE
+	*RECIBE*:
+		 IP:PORT(Origen): 182.110.4.53:4040
+		 IP:PORT(Destino): 255.255.255.255:4040
+		 NS: B
+		 ACK: B,A
+		 CTRL.ACK: TRUE
+		 CTRL.SYN: FALSE
+		 CTRL.FIN: FALSE
 
 *SEGMENTO RESPALDADO*
 
@@ -191,26 +185,24 @@ Desea enviar mas datos? 1.No 2.Si: 1
 *FIN*: Enviado
 
 *ACK*: Recibido 3ms
-
-*RECIBE*:
- IP:PORT(Origen): 255.255.255.255:4040
- IP:PORT(Destino): 182.110.4.53:4040
- NS: D
- ACK: D,C
- CTRL.ACK: TRUE
- CTRL.SYN: FALSE
- CTRL.FIN: FALSE
+	*RECIBE*:
+		 IP:PORT(Origen): 255.255.255.255:4040
+		 IP:PORT(Destino): 182.110.4.53:4040
+		 NS: D
+		 ACK: D,C
+		 CTRL.ACK: TRUE
+		 CTRL.SYN: FALSE
+		 CTRL.FIN: FALSE
 
 *FIN*: Recibido 2ms
-
-*RECIBE*:
- IP:PORT(Origen): 255.255.255.255:4040
- IP:PORT(Destino): 182.110.4.53:4040
- NS: D
- ACK: D,C
- CTRL.ACK: FALSE
- CTRL.SYN: FALSE
- CTRL.FIN: TRUE
+	*RECIBE*:
+		 IP:PORT(Origen): 255.255.255.255:4040
+		 IP:PORT(Destino): 182.110.4.53:4040
+		 NS: D
+		 ACK: D,C
+		 CTRL.ACK: FALSE
+		 CTRL.SYN: FALSE
+		 CTRL.FIN: TRUE
 
 *ACK*: Enviado
 
@@ -225,22 +217,25 @@ Hola Jefe!. Que quiere ser?
 2.Cliente
 3.Salir
 : 2
- IP:PORT(Origen): 182.110.4.53:4040
- IP:PORT(Destino): 255.255.255.255:4040
+*SEGMENTO*:  
+ Texto a enviar: perro
+ 
+*SOCKET*:
+	 IP:PORT(Origen): 182.110.4.53:4040
+	 IP:PORT(Destino): 255.255.255.255:4040
 ```
 ```
-*CLIENTE*:SYN Enviado
+*CLIENTE*: SYN Enviado
 
 *CLIENTE*: SYN/ACK Recibido 9ms
-
-*RECIBE*:
- IP:PORT(Origen): 255.255.255.255:4040
- IP:PORT(Destino): 182.110.4.53:4040
- NS: A
- ACK: A,B
- CTRL.ACK: TRUE
- CTRL.SYN: TRUE
- CTRL.FIN: FALSE
+	*RECIBE*:
+		 IP:PORT(Origen): 255.255.255.255:4040
+		 IP:PORT(Destino): 182.110.4.53:4040
+		 NS: A
+		 ACK: A,B
+		 CTRL.ACK: TRUE
+		 CTRL.SYN: TRUE
+		 CTRL.FIN: FALSE
 
 *SEGMENTO RESPALDADO*
 
@@ -252,30 +247,28 @@ Desea enviar mas datos? 1.No 2.Si: 2
 
 ```
 *FIN*: Recibido 0ms
-
-*RECIBE*:
- IP:PORT(Origen): 182.110.4.53:4040
- IP:PORT(Destino): 255.255.255.255:4040
- NS: C
- ACK:
- CTRL.ACK: FALSE
- CTRL.SYN: FALSE
- CTRL.FIN: TRUE
+	*RECIBE*:
+		 IP:PORT(Origen): 182.110.4.53:4040
+		 IP:PORT(Destino): 255.255.255.255:4040
+		 NS: C
+		 ACK:
+		 CTRL.ACK: FALSE
+		 CTRL.SYN: FALSE
+		 CTRL.FIN: TRUE
 
 *ACK*: Enviado
 
 *FIN*: Enviado
 
 *ACK*: Recibido 2ms
-
-*RECIBE*:
- IP:PORT(Origen): 182.110.4.53:4040
- IP:PORT(Destino): 255.255.255.255:4040
- NS: C
- ACK: C,D
- CTRL.ACK: TRUE
- CTRL.SYN: FALSE
- CTRL.FIN: FALSE
+	*RECIBE*:
+		 IP:PORT(Origen): 182.110.4.53:4040
+		 IP:PORT(Destino): 255.255.255.255:4040
+		 NS: C
+		 ACK: C,D
+		 CTRL.ACK: TRUE
+		 CTRL.SYN: FALSE
+		 CTRL.FIN: FALSE
 
 *FIN DE LA COMUNICACION*
 ```
