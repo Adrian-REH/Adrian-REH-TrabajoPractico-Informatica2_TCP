@@ -412,7 +412,10 @@ int TIME_WAIT(segmento_t segmentos){
 	printf("\n---------------------------------------------------------\n");
 	fwrite(&finsegment,sizeof(segmento_t),1,datos);
 	fclose(datos);
+	printf("\nEspere 10s\n");
 	Sleep(10000);
+	printf("\n---------------------------------------------------------\n");
+
 	return CLOSED();
 }
 
