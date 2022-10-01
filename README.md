@@ -141,6 +141,134 @@ char * ns_ack(char *);
 
 
  >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
+ 
+ - **CMD 1 **: 
+```
+Hola Jefe!. Que quiere ser?
+1.Servidor
+2.Cliente
+3.Salir
+: 1
+*SEGMENTO*:  
+ Texto a enviar: perro
 
+*SOCKET*
+ IP:PORT(Origen): 255.255.255.255:4040
+ IP:PORT(Destino):
+
+*SERVIDOR*: SYN Recibido 0ms
+
+ IP:PORT(Origen): 182.110.4.53:4040
+ IP:PORT(Destino): 255.255.255.255:4040
+ NS: B
+ ACK:
+ CTRL.ACK: FALSE
+ CTRL.SYN: TRUE
+ CTRL.FIN: FALSE
+
+*SERVIDOR*: SYN/ACK Enviado
+
+*SERVIDOR*: ACK Recibido 1ms
+
+*RECIBE*:
+ IP:PORT(Origen): 182.110.4.53:4040
+ IP:PORT(Destino): 255.255.255.255:4040
+ NS: B
+ ACK: B,A
+ CTRL.ACK: TRUE
+ CTRL.SYN: FALSE
+ CTRL.FIN: FALSE
+
+*SEGMENTO RESPALDADO*
+
+*CONEXION ESTABLECIDA*:
+*TEXTO RECIBIDO*: gato
+Desea enviar mas datos? 1.No 2.Si: 1
+
+*FIN*: Enviado
+
+*ACK*: Recibido 3ms
+
+*RECIBE*:
+ IP:PORT(Origen): 255.255.255.255:4040
+ IP:PORT(Destino): 182.110.4.53:4040
+ NS: D
+ ACK: D,C
+ CTRL.ACK: TRUE
+ CTRL.SYN: FALSE
+ CTRL.FIN: FALSE
+
+*FIN*: Recibido 2ms
+
+*RECIBE*:
+ IP:PORT(Origen): 255.255.255.255:4040
+ IP:PORT(Destino): 182.110.4.53:4040
+ NS: D
+ ACK: D,C
+ CTRL.ACK: FALSE
+ CTRL.SYN: FALSE
+ CTRL.FIN: TRUE
+
+*ACK*: Enviado
+
+*FIN DE LA COMUNICACION*
+```
+ - **CMD 2 **: 
+```
+Hola Jefe!. Que quiere ser?
+1.Servidor
+2.Cliente
+3.Salir
+: 2
+ IP:PORT(Origen): 182.110.4.53:4040
+ IP:PORT(Destino): 255.255.255.255:4040
+
+*CLIENTE*:SYN Enviado
+
+*CLIENTE*: SYN/ACK Recibido 9ms
+
+*RECIBE*:
+ IP:PORT(Origen): 255.255.255.255:4040
+ IP:PORT(Destino): 182.110.4.53:4040
+ NS: A
+ ACK: A,B
+ CTRL.ACK: TRUE
+ CTRL.SYN: TRUE
+ CTRL.FIN: FALSE
+
+*SEGMENTO RESPALDADO*
+
+*CONEXION ESTABLECIDA*:
+*TEXTO RECIBIDO*: perro
+Desea enviar mas datos? 1.No 2.Si: 2
+
+*FIN*: Recibido 0ms
+
+*RECIBE*:
+ IP:PORT(Origen): 182.110.4.53:4040
+ IP:PORT(Destino): 255.255.255.255:4040
+ NS: C
+ ACK:
+ CTRL.ACK: FALSE
+ CTRL.SYN: FALSE
+ CTRL.FIN: TRUE
+
+*ACK*: Enviado
+
+*FIN*: Enviado
+
+*ACK*: Recibido 2ms
+
+*RECIBE*:
+ IP:PORT(Origen): 182.110.4.53:4040
+ IP:PORT(Destino): 255.255.255.255:4040
+ NS: C
+ ACK: C,D
+ CTRL.ACK: TRUE
+ CTRL.SYN: FALSE
+ CTRL.FIN: FALSE
+
+*FIN DE LA COMUNICACION*
+```
  ### Tiempo
  Tiempo total para la elaboracion: 36hs
