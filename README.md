@@ -1,4 +1,4 @@
-# Máquina de Estado
+# TP-Máquina de Estado: TCP
 ## Memoria descriptiva
  El sistema ha representar es del Protocolo de Control de Transmisión el cual se encarga de informar del destino de los datos permitiendo la creación de conexiones en 3 etapas.
  
@@ -288,7 +288,7 @@ Desea enviar mas datos? 1.No 2.Si: 2
 *FIN DE LA COMUNICACION*
 ---------------------------------------------------------
 ```
- ### Tiempo
+ ## Tiempo
  Tiempo total : 25hs
 - Para el codigo: 14hs
 - - OPEN: 10hs
