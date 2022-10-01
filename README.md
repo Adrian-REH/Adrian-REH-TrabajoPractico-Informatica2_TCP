@@ -289,6 +289,8 @@ Desea enviar mas datos? 1.No 2.Si: 2
 ---------------------------------------------------------
 ```
  ### Tiempo
- Tiempo total : 36hs
-- Para el codigo: 24hs
-- Para la investigacion: 12 hs
+ Tiempo total : 22hs
+- Para el codigo: 14hs
+- - OPEN: 10hs
+- - CLOSE: 4hs
+- Para la investigacion: 8 hs
