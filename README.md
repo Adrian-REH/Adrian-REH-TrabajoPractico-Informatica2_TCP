@@ -288,6 +288,38 @@ Desea enviar mas datos? 1.No 2.Si: 2
 *FIN DE LA COMUNICACION*
 ---------------------------------------------------------
 ```
+ ## Errores
+ Es comun que al seleccionar ser Cliente termine la actividad asi:
+```
+---------------------------------------------------------
+Hola Jefe!. Que quiere ser?
+1.Servidor
+2.Cliente
+3.Salir
+: 2
+---------------------------------------------------------
+*SEGMENTO*:  
+ Texto a enviar: perro
+ ---------------------------------------------------------
+*SOCKET*:
+	 IP:PORT(Origen): 182.110.4.53:4040
+	 IP:PORT(Destino): 255.255.255.255:4040
+---------------------------------------------------------
+```
+```
+---------------------------------------------------------
+*CLIENTE*: SYN Enviado
+
+ ```
+
+**Solucion:** 
+ 
+    1. Vacie el archivo datos.dat
+    2. Inicie uno de los CMD(A) como Cliente(Hasta que se mantenga en espera) 
+    3. Si sigue fallando repita los puntos 1. y 2.
+    4. Si inicio en un CMD(B) servidor use CTRL+C para reiniciarlo
+    5. Inicie el  CMD(B) como Servidor.
+    
  ## Tiempo
  Tiempo total : 25hs
 - Para el codigo: 14hs
