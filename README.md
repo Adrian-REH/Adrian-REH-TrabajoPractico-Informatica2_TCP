@@ -125,3 +125,5 @@ int CLOSED(void);
 char * ns_ack(char *);
 #endif /* HEADERS_MYLIB_H_ */
 ```
+ ### Tiempo
+ Tiempo total para la elaboracion: 36hs
