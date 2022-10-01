@@ -289,4 +289,6 @@ Desea enviar mas datos? 1.No 2.Si: 2
 ---------------------------------------------------------
 ```
  ### Tiempo
- Tiempo total para la elaboracion: 36hs
+ Tiempo total : 36hs
+- Para el codigo: 24hs
+- Para la investigacion: 12 hs
