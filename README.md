@@ -126,6 +126,16 @@ char * ns_ack(char *);
 #endif /* HEADERS_MYLIB_H_ */
 ```
  ### Puesta en marcha
- 
+  **3 HANDSHAKE**: Luego de indicar ser Servidor(PASSIVE OPEN) o Cliente(ACTIVE OPEN) e ingresar el texto a enviar te podras guiar de lo que sucedera con el siguiente gif
+  ![gickr com _44f4c153-c78f-6a04-05b4-d122d05e24a3](https://user-images.githubusercontent.com/64231248/193424047-244a354a-fb86-4eca-9a27-0d72fc27fbe0.gif)
+  
+ >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
+  **4 HANDSHAKE**: 
+   Luego de que la consola pregunte si Seguiras ingresando mas datos debes ingresar 1 para el **_ACTIVE CLOSE_** y en la otra maquina debes ingresar 2 Para hacer el **_PASSIVE CLOSE_**. 
+   
+ ![gickr com _cc9644b3-fca4-15d4-9934-87a62e5805a2](https://user-images.githubusercontent.com/64231248/193422432-fe214588-eec4-41a9-86ce-b9f601c271c7.gif)
+
+ >referencia de lo que sucedera en tus consolas de forma automatica.[GIF creado por mi ahre]
+
  ### Tiempo
  Tiempo total para la elaboracion: 36hs
