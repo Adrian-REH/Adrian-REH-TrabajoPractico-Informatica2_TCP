@@ -108,9 +108,10 @@ segmento_t escribe_servicio(char *);
 //ACTIVE CLOSE
 int SYN_SENT(segmento_t segmentos);
 //PASSIVE CLOSE
-int STABLISHED(segmento_t segmentos,char*);
 int LISTEN(segmento_t segmentos);
 int SYN_RCVD(segmento_t segmentos);
+//ESPERA DE SEGMENTO O FIN
+int STABLISHED(segmento_t segmentos,char*);
 //ACTIVE CLOSE
 int FIN_WAIT_1(void);
 int FIN_WAIT_2(segmento_t segmentos);
