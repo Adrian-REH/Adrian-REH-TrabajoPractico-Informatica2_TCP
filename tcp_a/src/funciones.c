@@ -96,6 +96,7 @@ segmento_t escribe_servicio(char *CTRL){
 
 }
 
+//ACTIVE CLOSE
 int SYN_SENT(segmento_t segmentos){
 	segmento_t sgment,sgment_stb;
 	int i = 0;
@@ -151,6 +152,7 @@ int SYN_SENT(segmento_t segmentos){
 	return 0;
 }
 
+//PASSIVE CLOSE
 int LISTEN(segmento_t segmentos){
 	segmento_t sgment,sgment_rcvd;
 
@@ -200,7 +202,6 @@ int LISTEN(segmento_t segmentos){
 	return 0;
 
 }
-
 int SYN_RCVD(segmento_t segmentos){
 	segmento_t sgment;
 	int i = 0;
@@ -247,6 +248,7 @@ int SYN_RCVD(segmento_t segmentos){
 	return 0;
 }
 
+//ESPERO SEGMENTO O FIN
 int STABLISHED(segmento_t segmentos,char*s){
 	int i = 0;
 	int opc;
@@ -358,7 +360,6 @@ int FIN_WAIT_2(segmento_t segmentos){
 	fclose(datos);
 	return 0;
 }
-
 int TIME_WAIT(segmento_t segmentos){
 	segmento_t finsegment,rcvsegment;
 	int i = 0;
@@ -487,7 +488,7 @@ int LAST_ACK(segmento_t segmentos){
 }
 
 
-
+//FIN TOTAL
 int CLOSED(void){
 	printf("\n*FIN DE LA COMUNICACION*\n");
 	return 0;
