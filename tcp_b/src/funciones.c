@@ -231,7 +231,7 @@ int SYN_RCVD(segmento_t segmentos){
 						printf("\n*SERVIDOR*:\tACK Recibido %dms\n",i);
 						printf("\n\t*RECIBE*:\n\t\tIP:PORT(Origen):\t%s\n\t\tIP:PORT(Destino):\t%s\n\t\tNS:\t%s\n\t\tACK:\t%s\n\t\tCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",sgment.portip_origen,sgment.portip_destino,sgment.NS,sgment.ACK,sgment.CTRL.ACK,sgment.CTRL.SYN,sgment.CTRL.FIN);
 						printf("\n---------------------------------------------------------\n");
-						return STABLISHED(sgment,sgment.datos);
+						return STABLISHED(segmentos,sgment.datos);
 					}else if(strcmp(sgment.CTRL.FIN,"TRUE")){
 						//return CLOSE();
 					}
@@ -442,8 +442,8 @@ int CLOSING_WAIT(void){
 					strcat(finsegment.ACK,",");
 					strcat(finsegment.ACK,rcvsegment.NS);
 					strcpy(finsegment.datos,"");
-					strcpy(finsegment.portip_origen,segmentos.portip_destino);
-					strcpy(finsegment.portip_destino,segmentos.portip_origen);
+					strcpy(finsegment.portip_origen,segmentos.portip_origen);
+					strcpy(finsegment.portip_destino,segmentos.portip_destino);
 					strcpy(finsegment.NS,"D");
 					strcpy(finsegment.CTRL.ACK,"TRUE");
 					strcpy(finsegment.CTRL.SYN,"FALSE");
