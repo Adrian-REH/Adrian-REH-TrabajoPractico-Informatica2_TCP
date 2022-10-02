@@ -319,6 +319,7 @@ Hola Jefe!. Que quiere ser?
     3. Si sigue fallando repita los puntos 1. y 2.
     4. Si inicio en un CMD(B) servidor use CTRL+C para reiniciarlo
     5. Inicie el  CMD(B) como Servidor.
+    6. Si no soluciona el problema intercambia las terminales iniciando primero como Cliente.
     
  ## Tiempo
  Tiempo total : 25hs
