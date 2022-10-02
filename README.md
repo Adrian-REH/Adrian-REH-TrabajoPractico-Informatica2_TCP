@@ -192,8 +192,8 @@ Desea enviar mas datos? 1.No 2.Si: 1
 ---------------------------------------------------------
 *ACK*: Recibido 3ms
 	*RECIBE*:
-		 IP:PORT(Origen): 255.255.255.255:4040
-		 IP:PORT(Destino): 182.110.4.53:4040
+		 IP:PORT(Origen): 182.110.4.53:4040
+		 IP:PORT(Destino): 255.255.255.255:4040
 		 NS: D
 		 ACK: D,C
 		 CTRL.ACK: TRUE
@@ -202,8 +202,8 @@ Desea enviar mas datos? 1.No 2.Si: 1
 ---------------------------------------------------------
 *FIN*: Recibido 2ms
 	*RECIBE*:
-		 IP:PORT(Origen): 255.255.255.255:4040
-		 IP:PORT(Destino): 182.110.4.53:4040
+		 IP:PORT(Origen): 182.110.4.53:4040
+		 IP:PORT(Destino): 255.255.255.255:4040
 		 NS: D
 		 ACK: D,C
 		 CTRL.ACK: FALSE
@@ -263,8 +263,8 @@ Desea enviar mas datos? 1.No 2.Si: 2
 ---------------------------------------------------------
 *FIN*: Recibido 0ms
 	*RECIBE*:
-		 IP:PORT(Origen): 182.110.4.53:4040
-		 IP:PORT(Destino): 255.255.255.255:4040
+		 IP:PORT(Origen): 255.255.255.255:4040
+		 IP:PORT(Destino): 182.110.4.53:4040
 		 NS: C
 		 ACK:
 		 CTRL.ACK: FALSE
@@ -277,8 +277,8 @@ Desea enviar mas datos? 1.No 2.Si: 2
 ---------------------------------------------------------
 *ACK*: Recibido 2ms
 	*RECIBE*:
-		 IP:PORT(Origen): 182.110.4.53:4040
-		 IP:PORT(Destino): 255.255.255.255:4040
+		 IP:PORT(Origen): 255.255.255.255:4040
+		 IP:PORT(Destino): 182.110.4.53:4040
 		 NS: C
 		 ACK: C,D
 		 CTRL.ACK: TRUE
