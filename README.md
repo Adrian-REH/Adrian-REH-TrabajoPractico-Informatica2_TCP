@@ -93,40 +93,42 @@
 #include <ctype.h>
 #include <string.h>
 #include<stdbool.h>
+
+FILE *datos,*servicio;
+
 typedef struct {
     char ACK[6];
     char SYN[6];
     char FIN[6];
 
-}control_t; 
+}control_t;
 
-
-FILE *datos,*servicio;
 typedef struct {
-	char portip_origen[64]; 
-    char portip_destino[64]; 
-    char NS[32]; 
+	char portip_origen[64];
+    char portip_destino[64];
+    char NS[32];
     char ACK[32];
 
-    control_t CTRL; 
-    char datos[32]; 
+    control_t CTRL;
+    char datos[32];
 } segmento_t;
 
+segmento_t (*seg)(segmento_t segmentos);
+
 int seleccionar(void);
-segmento_t escribe_servicio(char *);
+segmento_t escribe_servicio(int);
 //ACTIVE CLOSE
-int SYN_SENT(segmento_t segmentos);
+segmento_t SYN_SENT(segmento_t segmentos);
 //PASSIVE CLOSE
-int LISTEN(segmento_t segmentos);
-int SYN_RCVD(segmento_t segmentos);
-//ESPERA DE SEGMENTO O FIN
-int STABLISHED(segmento_t segmentos,char*);
+segmento_t STABLISHED(segmento_t segmentos,char*);
+segmento_t LISTEN(segmento_t segmentos);
+segmento_t SYN_RCVD(segmento_t segmentos);
 //ACTIVE CLOSE
-int FIN_WAIT_1(void);
+segmento_t FIN_WAIT_1(segmento_t segmento);
 int FIN_WAIT_2(segmento_t segmentos);
 int TIME_WAIT(segmento_t segmentos);
 //PASSIVE CLOSE
-int CLOSING_WAIT(void);
+segmento_t CLOSING_WAIT(segmento_t segmento);
 int LAST_ACK(segmento_t segmentos);
 //FIN TOTAL
 int CLOSED(void);
@@ -134,6 +136,7 @@ int CLOSED(void);
 //DESCOMPONE EL ACK
 char * ns_ack(char *);
 #endif /* HEADERS_MYLIB_H_ */
+
 ```
  ## Puesta en marcha
  
@@ -322,9 +325,10 @@ Hola Jefe!. Que quiere ser?
     6. Si no soluciona el problema intercambia las terminales iniciando primero como Cliente.
     
  ## Tiempo
- Tiempo total : 25hs
-- Para el codigo: 14hs
+ Tiempo total : 29hs
+- Para el codigo: 18hs
 - - OPEN: 10hs
 - - CLOSE: 4hs
+- - Actualizaciones: 4hs
 - Para la investigacion: 8 hs
 - Diseño y limpieza: 3hs
