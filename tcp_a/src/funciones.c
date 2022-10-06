@@ -2,80 +2,22 @@
 
 int seleccionar(void){
 	int opc;
-	int siguiente=0,crack=4;
 	printf("\n---------------------------------------------------------\n");
 	printf("Hola Jefe!. Que quiere ser? 1.Servidor 2.Cliente 3.Salir\n: ");
 	scanf("%d",&opc);
-	switch(opc){
-	case 1:
-		printf("\n---------------------------------------------------------\n");
-		printf("*SEGMENTO*:  ");
-
-		do{
-
-			siguiente=LISTEN(escribe_servicio("SYN/ACK"));
-
-			if(siguiente==3 || siguiente==1){
-				crack=1;
-			}else if(siguiente==2){
-				crack=0;
-			}
-
-		}while(crack!=1);
-
-		break;
-	case 2:
-		printf("*SEGMENTO*:  ");
-		do{
-
-			siguiente=SYN_SENT(escribe_servicio("SYN"));
-
-			if(siguiente==3 || siguiente==1){
-				crack=1;
-			}else if(siguiente==2){
-				crack=0;
-			}
-
-		}while(crack!=1);
-
-
-		break;
-	case 3:
-		return 0;
-		break;
-	}
-	switch(siguiente){
-	case 1:
-		printf("\n---------------------------------------------------------\n");
-		FIN_WAIT_1();
-
-		//ACTIVO
-		break;
-	case 3:
-		//CLOSING_WAIT(escribe_servicio("SYN"));
-			//PASIVO
-		printf("\n---------------------------------------------------------\n");
-		CLOSING_WAIT();
-
-		break;
-	}
-
-
-
-	return 0;
+	return opc;
 }
 
-segmento_t escribe_servicio(char *CTRL){
+segmento_t escribe_servicio(int CTRL){
 	segmento_t segmentos;
-	char aux[30];
-	strcpy(aux,CTRL);
+
 
 
 	strcpy(segmentos.ACK,"");
 	printf("\n\tTexto a enviar: ");
 	scanf("%s",segmentos.datos);
 	printf("\n---------------------------------------------------------\n");
-	if(strcmp(aux,"SYN/ACK")== 0){
+	if(CTRL== 1){
 		strcpy(segmentos.portip_origen,"255.255.255.255:4040");
 		strcpy(segmentos.portip_destino,"");
 		strcpy(segmentos.NS,"A");
@@ -84,7 +26,7 @@ segmento_t escribe_servicio(char *CTRL){
 		strcpy(segmentos.CTRL.FIN,"FALSE");
 		printf("\n*SOCKET*\n\tIP:PORT(Origen):\t%s\n\tIP:PORT(Destino):\t%s\n",segmentos.portip_origen,segmentos.portip_destino);
 		printf("\n---------------------------------------------------------\n");
-	}else if(strcmp(aux,"SYN")== 0){
+	}else if(CTRL== 2){
 
 		strcpy(segmentos.portip_origen,"182.110.4.53:4040");
 		strcpy(segmentos.portip_destino,"255.255.255.255:4040");
@@ -101,7 +43,7 @@ segmento_t escribe_servicio(char *CTRL){
 }
 
 //ACTIVE CLOSE
-int SYN_SENT(segmento_t segmentos){
+segmento_t SYN_SENT(segmento_t segmentos){
 	segmento_t sgment,sgment_stb;
 	int i = 0;
 	char NS[30];
@@ -137,7 +79,12 @@ int SYN_SENT(segmento_t segmentos){
 					strcpy(sgment_stb.CTRL.ACK,"TRUE");
 					strcpy(sgment_stb.CTRL.SYN,"FALSE");
 					strcpy(sgment_stb.CTRL.FIN,"FALSE");
+
+
 					return STABLISHED(sgment_stb,sgment.datos);
+
+
+
 
 				}
 
@@ -154,11 +101,11 @@ int SYN_SENT(segmento_t segmentos){
 	printf("No se encontro comunicacion de parte del servidor");
 	fclose(datos);
 
-	return 0;
+	return segmentos;
 }
 
 //PASSIVE CLOSE
-int LISTEN(segmento_t segmentos){
+segmento_t LISTEN(segmento_t segmentos){
 	segmento_t sgment,sgment_rcvd;
 
 	int i = 0;
@@ -183,8 +130,11 @@ int LISTEN(segmento_t segmentos){
 						strcpy(sgment_rcvd.CTRL.ACK,"TRUE");
 						strcpy(sgment_rcvd.CTRL.SYN,"TRUE");
 						strcpy(sgment_rcvd.CTRL.FIN,"FALSE");
-						return SYN_RCVD(sgment_rcvd);
 
+
+
+
+							return SYN_RCVD(sgment_rcvd);
 					}else if(strcmp(sgment.CTRL.FIN,"TRUE")){
 						//return CLOSE();
 					}
@@ -203,10 +153,10 @@ int LISTEN(segmento_t segmentos){
 	fclose(datos);
 	printf("No se encontro comunicacion de parte del cliente");
 
-	return 0;
+	return segmentos;
 
 }
-int SYN_RCVD(segmento_t segmentos){
+segmento_t SYN_RCVD(segmento_t segmentos){
 	segmento_t sgment;
 	int i = 0;
 	char NS[30];
@@ -253,11 +203,11 @@ int SYN_RCVD(segmento_t segmentos){
 	printf("No recivi un ACK en 6 segundos de espera\n");
 
 	fclose(datos);
-	return 0;
+	return segmentos;
 }
 
 //ESPERO SEGMENTO O FIN
-int STABLISHED(segmento_t segmentos,char*s){
+segmento_t STABLISHED(segmento_t segmentos,char*s){
 
 	int opc;
 	segmento_t sgment;
@@ -286,11 +236,22 @@ int STABLISHED(segmento_t segmentos,char*s){
 			if(strcmp(sgment.CTRL.FIN,"TRUE")== 0){
 				printf("\n---------------------------------------------------------\n");
 				printf("\n*LA CONTRAPARTE ENVIO UN FIN DESCONECTARSE*\n");
-				opc=3;
-				return 3;//ES PASIVO
-			}else if(strcmp(sgment.CTRL.FIN,"FALSE")== 0){
+				strcpy(segmentos.CTRL.SYN,"FALSE");
+				strcpy(segmentos.CTRL.FIN,"FALSE");
+				printf("\nCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",segmentos.CTRL.ACK,segmentos.CTRL.SYN,segmentos.CTRL.FIN);
 
-				return opc;//ES ACTIVO
+				return segmentos;//ES PASIVO
+			}else if(strcmp(sgment.CTRL.FIN,"FALSE")== 0){
+				if(opc==1){
+					strcpy(segmentos.CTRL.SYN,"FALSE");
+					strcpy(segmentos.CTRL.FIN,"TRUE");
+				}else if(opc==2){
+					strcpy(segmentos.CTRL.SYN,"TRUE");
+					strcpy(segmentos.CTRL.FIN,"FALSE");
+				}
+				printf("\nCTRL.ACK:\t%s \n\t\tCTRL.SYN:\t%s\n\t\tCTRL.FIN:\t%s\n",segmentos.CTRL.ACK,segmentos.CTRL.SYN,segmentos.CTRL.FIN);
+
+				return segmentos;
 			}
 
 			fread(&sgment,sizeof(segmento_t),1,datos);
@@ -298,7 +259,7 @@ int STABLISHED(segmento_t segmentos,char*s){
 
 
 	fclose(datos);
-	return 2;
+	return segmentos;
 
 }
 
@@ -316,7 +277,7 @@ char * ns_ack(char *s){
 }
 
 //ACTIVE CLOSE
-int FIN_WAIT_1(void){
+segmento_t FIN_WAIT_1(segmento_t segmento){
 	segmento_t segmentos,finsegment;
 
 
@@ -342,8 +303,10 @@ int FIN_WAIT_1(void){
 	fwrite(&finsegment,sizeof(segmento_t),1,datos);
 	fclose(datos);
 
+	FIN_WAIT_2(finsegment);
 
-	return FIN_WAIT_2(finsegment);
+		return finsegment;
+
 }
 int FIN_WAIT_2(segmento_t segmentos){
 	segmento_t finsegment;
@@ -421,7 +384,7 @@ int TIME_WAIT(segmento_t segmentos){
 
 
 //PASSIVE CLOSE
-int CLOSING_WAIT(void){
+segmento_t CLOSING_WAIT(segmento_t segmento){
 
 	segmento_t finsegment,rcvsegment,segmentos;
 	int i = 0;
@@ -448,7 +411,9 @@ int CLOSING_WAIT(void){
 					strcpy(finsegment.CTRL.ACK,"TRUE");
 					strcpy(finsegment.CTRL.SYN,"FALSE");
 					strcpy(finsegment.CTRL.FIN,"FALSE");
-					return LAST_ACK(finsegment);
+					LAST_ACK(finsegment);
+					return finsegment;
+
 				}
 
 			fread(&rcvsegment,sizeof(segmento_t),1,datos);
@@ -460,7 +425,7 @@ int CLOSING_WAIT(void){
 
 
 
-	return 0;
+	return segmento;
 
 }
 int LAST_ACK(segmento_t segmentos){

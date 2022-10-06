@@ -7,6 +7,9 @@
 #include <ctype.h>
 #include <string.h>
 #include<stdbool.h>
+
+FILE *datos,*servicio;
+
 typedef struct {
     char ACK[6];
     char SYN[6];
@@ -14,8 +17,6 @@ typedef struct {
 
 }control_t;
 
-
-FILE *datos,*servicio;
 typedef struct {
 	char portip_origen[64];
     char portip_destino[64];
@@ -26,21 +27,22 @@ typedef struct {
     char datos[32];
 } segmento_t;
 
+segmento_t (*seg)(segmento_t segmentos);
 
 int seleccionar(void);
-segmento_t escribe_servicio(char *);
+segmento_t escribe_servicio(int);
 //ACTIVE CLOSE
-int SYN_SENT(segmento_t segmentos);
+segmento_t SYN_SENT(segmento_t segmentos);
 //PASSIVE CLOSE
-int STABLISHED(segmento_t segmentos,char*);
-int LISTEN(segmento_t segmentos);
-int SYN_RCVD(segmento_t segmentos);
+segmento_t STABLISHED(segmento_t segmentos,char*);
+segmento_t LISTEN(segmento_t segmentos);
+segmento_t SYN_RCVD(segmento_t segmentos);
 //ACTIVE CLOSE
-int FIN_WAIT_1(void);
+segmento_t FIN_WAIT_1(segmento_t segmento);
 int FIN_WAIT_2(segmento_t segmentos);
 int TIME_WAIT(segmento_t segmentos);
 //PASSIVE CLOSE
-int CLOSING_WAIT(void);
+segmento_t CLOSING_WAIT(segmento_t segmento);
 int LAST_ACK(segmento_t segmentos);
 //FIN TOTAL
 int CLOSED(void);
