@@ -147,7 +147,7 @@ typedef struct {
 } segmento_t;
 
 segmento_t (*seg)(segmento_t segmentos);
-
+char * getkey(char *key);
 int seleccionar(void);
 segmento_t escribe_servicio(int);
 //ACTIVE CLOSE
@@ -169,6 +169,15 @@ int CLOSED(void);
 //DESCOMPONE EL ACK
 char * ns_ack(char *);
 #endif /* HEADERS_MYLIB_H_ */
+
+```
+- Archivo de cabecera __config.conf__
+```
+# Ip y Puerto de origen del cliente
+ipportc 182.110.4.53:4040
+
+# Ip y Puerto de origen del servidor
+ipports 255.255.255.255:4040
 
 ```
  ## Puesta en marcha
