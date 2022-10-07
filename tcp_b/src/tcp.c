@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include "../Header/Mytypes.h"
 
-int main(void) {
+int main(int argc, char const *argv[]) {
 
 	int opc;
 	int siguiente=0,crack=4;

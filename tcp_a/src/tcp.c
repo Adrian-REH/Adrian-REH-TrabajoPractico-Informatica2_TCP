@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include "../Header/Mytypes.h"
 
-int main(void) {
+int main(int argc, char const *argv[]) {
 
 	int opc;
 	int siguiente=0,crack=4;
@@ -21,6 +21,9 @@ int main(void) {
 
 	segmento_t (*entregas[4])(segmento_t pedidos)={LISTEN,SYN_SENT,FIN_WAIT_1,CLOSING_WAIT};
 	opc=seleccionar();
+
+
+
 	do{
 		pedidos=(*entregas[opc-1])(escribe_servicio(opc));
 

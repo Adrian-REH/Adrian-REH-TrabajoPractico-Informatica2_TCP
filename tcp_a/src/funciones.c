@@ -7,18 +7,68 @@ int seleccionar(void){
 	scanf("%d",&opc);
 	return opc;
 }
+char * getkey(char *key){
+	char i=0;
+	while(*(key+i) !=' '){
+		i++;
+	}
+	*(key+i)=0;
 
+	return key+i+1;
+}
 segmento_t escribe_servicio(int CTRL){
 	segmento_t segmentos;
 
+	int i;
+	char cadena[40], *key, *val;
+	char variable[2][40]={"ipportc", "ipports"};
 
+	char ip_port_o_c[40],ip_port_o_s[40];
+	if((conf=fopen("config.conf","rb"))== NULL ){
+		printf("No existe el archivo de configuracion\n");
+		return segmentos;
+	}
+	fgets(cadena,40,conf);
+	do{
+		key=cadena;
+		if((*key)!='#' && strlen(key)>=0){
+
+			val =getkey(key);
+			//printf(" %s %s\n",key,val);
+			for(i=0;i<2;i++){
+
+
+				if(!strcmp(key,variable[i])){
+
+					switch(i){
+
+					case 0:
+						strcpy(ip_port_o_c,val);
+
+						break;
+					case 1: strcpy(ip_port_o_s,val);
+
+						break;
+					}
+				}
+			}
+
+
+		}
+		fgets(cadena,40,conf);
+
+	}while(!feof(conf));
+
+
+
+//USO UN ARCHIVO DE CONFIGURACION QUE ME DE LA IP(ORIGEN) DEL SRV Y CLIENTE Y LA IP(DESTINO) DEL CLIENTE
 
 	strcpy(segmentos.ACK,"");
 	printf("\n\tTexto a enviar: ");
 	scanf("%s",segmentos.datos);
 	printf("\n---------------------------------------------------------\n");
 	if(CTRL== 1){
-		strcpy(segmentos.portip_origen,"255.255.255.255:4040");
+		strcpy(segmentos.portip_origen,ip_port_o_s);
 		strcpy(segmentos.portip_destino,"");
 		strcpy(segmentos.NS,"A");
 		strcpy(segmentos.CTRL.ACK,"TRUE");
@@ -28,8 +78,8 @@ segmento_t escribe_servicio(int CTRL){
 		printf("\n---------------------------------------------------------\n");
 	}else if(CTRL== 2){
 
-		strcpy(segmentos.portip_origen,"182.110.4.53:4040");
-		strcpy(segmentos.portip_destino,"255.255.255.255:4040");
+		strcpy(segmentos.portip_origen,ip_port_o_c);
+		strcpy(segmentos.portip_destino,ip_port_o_s);
 		strcpy(segmentos.NS,"B");
 		strcpy(segmentos.CTRL.ACK,"FALSE");
 		strcpy(segmentos.CTRL.SYN,"TRUE");

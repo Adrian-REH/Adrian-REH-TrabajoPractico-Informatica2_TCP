@@ -8,7 +8,7 @@
 #include <string.h>
 #include<stdbool.h>
 
-FILE *datos,*servicio;
+FILE *datos,*servicio, *conf;
 
 typedef struct {
     char ACK[6];
@@ -28,7 +28,7 @@ typedef struct {
 } segmento_t;
 
 segmento_t (*seg)(segmento_t segmentos);
-
+char * getkey(char *key);
 int seleccionar(void);
 segmento_t escribe_servicio(int);
 //ACTIVE CLOSE
